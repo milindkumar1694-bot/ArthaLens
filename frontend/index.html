@@ -1,0 +1,131 @@
+<!doctype html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>ArthaLens | AI-Powered NIFTY & BANK NIFTY Options Intelligence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#d3e4fe",
+            "on-primary-fixed-variant": "#004f58",
+            "tertiary-container": "#ffc1c1",
+            "on-secondary-fixed-variant": "#005226",
+            "on-tertiary-fixed": "#40000a",
+            "on-tertiary-fixed-variant": "#920024",
+            "surface": "#031427",
+            "on-surface-variant": "#bac9cc",
+            "tertiary-fixed-dim": "#ffb3b4",
+            "surface-container-high": "#1b2b3f",
+            "tertiary-fixed": "#ffdad9",
+            "on-secondary-container": "#00622e",
+            "secondary": "#7dffa2",
+            "on-primary": "#00363d",
+            "surface-container": "#102034",
+            "background": "#031427",
+            "on-tertiary-container": "#b4002e",
+            "primary": "#c3f5ff",
+            "secondary-container": "#05e777",
+            "on-tertiary": "#680016",
+            "on-secondary": "#003918",
+            "surface-dim": "#031427",
+            "secondary-fixed": "#62ff96",
+            "on-error": "#690005",
+            "secondary-fixed-dim": "#00e475",
+            "on-primary-container": "#00626e",
+            "error": "#ffb4ab",
+            "primary-container": "#00e5ff",
+            "surface-tint": "#00daf3",
+            "surface-variant": "#26364a",
+            "outline-variant": "#3b494c",
+            "surface-container-lowest": "#000f21",
+            "inverse-on-surface": "#213145",
+            "surface-container-low": "#0b1c30",
+            "primary-fixed": "#9cf0ff",
+            "surface-container-highest": "#26364a",
+            "primary-fixed-dim": "#00daf3",
+            "inverse-surface": "#d3e4fe",
+            "error-container": "#93000a",
+            "on-secondary-fixed": "#00210b",
+            "on-background": "#d3e4fe",
+            "surface-bright": "#2a3a4f",
+            "on-primary-fixed": "#001f24",
+            "outline": "#849396",
+            "inverse-primary": "#006875",
+            "on-error-container": "#ffdad6",
+            "tertiary": "#ffe7e7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "0.5rem",
+            "gutter-sm": "0.25rem",
+            "gutter-lg": "0.75rem",
+            "margin": "0.75rem",
+            "margin-mobile": "0.5rem",
+            "space-xs": "0.125rem",
+            "space-sm": "0.25rem",
+            "space-md": "0.5rem",
+            "space-lg": "0.75rem",
+            "space-xl": "1rem",
+            "space-2xl": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "mono-xl": ["JetBrains Mono"],
+            "mono-lg": ["JetBrains Mono"],
+            "mono-md": ["JetBrains Mono"],
+            "mono-sm": ["JetBrains Mono"],
+            "mono-xs": ["JetBrains Mono"],
+            "label-md": ["JetBrains Mono"],
+            "label-sm": ["JetBrains Mono"],
+            "num-mono": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "headline-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "mono-xl": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "mono-lg": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "label-md": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "mono-xs": ["9px", { "lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label-sm": ["9px", { "lineHeight": "12px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "headline-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "mono-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "mono-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400" }]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body class="bg-[#05080D] font-body-md text-[#E7EEF5] select-none antialiased min-h-screen">
+  <div id="app"></div>
+</body>
+</html>

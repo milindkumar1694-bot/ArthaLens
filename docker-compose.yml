@@ -1,0 +1,20 @@
+services:
+  backend:
+    build: ./backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    ports: ["8000:8000"]
+    env_file: .env
+  frontend:
+    image: node:22-alpine
+    working_dir: /app
+    volumes: ["./frontend:/app"]
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    ports: ["5173:5173"]
+    environment: ["VITE_API_BASE_URL=http://localhost:8000/api/v1"]
+  postgres:
+    image: postgres:16-alpine
+    profiles: ["stateful"]
+    environment: ["POSTGRES_USER=arthalens", "POSTGRES_PASSWORD=arthalens", "POSTGRES_DB=arthalens"]
+  redis:
+    image: redis:7-alpine
+    profiles: ["stateful"]

@@ -1,0 +1,52 @@
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #05080D;
+    color: #E7EEF5;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+}
+
+/* Custom scrollbar hiding */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Typography Helpers */
+.font-mono-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom terminal glowing & card borders */
+.border-glow-aqua {
+  box-shadow: 0 0 12px rgba(37, 217, 210, 0.15);
+}
+
+.border-glow-green {
+  box-shadow: 0 0 12px rgba(34, 201, 151, 0.15);
+}
+
+.border-glow-red {
+  box-shadow: 0 0 12px rgba(255, 92, 108, 0.15);
+}
+
+/* Table styling fixes */
+th, td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Smooth modal transitions */
+.modal-backdrop {
+  background-color: rgba(3, 20, 39, 0.85);
+  backdrop-filter: blur(8px);
+}

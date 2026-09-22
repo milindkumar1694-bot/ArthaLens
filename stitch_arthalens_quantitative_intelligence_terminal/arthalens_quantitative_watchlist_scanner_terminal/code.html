@@ -1,0 +1,901 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-secondary-container": "#00622e",
+          "tertiary": "#ffe7e7",
+          "surface-container": "#102034",
+          "outline": "#849396",
+          "on-surface": "#d3e4fe",
+          "on-primary-fixed-variant": "#004f58",
+          "on-secondary-fixed-variant": "#005226",
+          "on-tertiary": "#680016",
+          "primary-fixed-dim": "#00daf3",
+          "secondary-fixed-dim": "#00e475",
+          "surface-container-high": "#1b2b3f",
+          "on-tertiary-container": "#b4002e",
+          "primary": "#c3f5ff",
+          "inverse-primary": "#006875",
+          "on-background": "#d3e4fe",
+          "surface-variant": "#26364a",
+          "inverse-on-surface": "#213145",
+          "secondary-fixed": "#62ff96",
+          "surface-bright": "#2a3a4f",
+          "surface-tint": "#00daf3",
+          "secondary-container": "#05e777",
+          "error-container": "#93000a",
+          "on-surface-variant": "#bac9cc",
+          "primary-fixed": "#9cf0ff",
+          "surface-container-highest": "#26364a",
+          "on-primary-container": "#00626e",
+          "surface-container-lowest": "#000f21",
+          "surface-dim": "#031427",
+          "on-error-container": "#ffdad6",
+          "on-error": "#690005",
+          "primary-container": "#00e5ff",
+          "inverse-surface": "#d3e4fe",
+          "on-secondary-fixed": "#00210b",
+          "on-primary": "#00363d",
+          "on-secondary": "#003918",
+          "on-tertiary-fixed-variant": "#920024",
+          "error": "#ffb4ab",
+          "surface": "#031427",
+          "on-primary-fixed": "#001f24",
+          "tertiary-fixed": "#ffdad9",
+          "surface-container-low": "#0b1c30",
+          "outline-variant": "#3b494c",
+          "secondary": "#7dffa2",
+          "tertiary-fixed-dim": "#ffb3b4",
+          "background": "#031427",
+          "on-tertiary-fixed": "#40000a",
+          "tertiary-container": "#ffc1c1"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "gutter": "0.5rem",
+          "space-md": "0.5rem",
+          "space-xl": "1rem",
+          "margin-mobile": "0.5rem",
+          "gutter-lg": "0.75rem",
+          "space-lg": "0.75rem",
+          "margin": "0.75rem",
+          "space-sm": "0.25rem",
+          "space-xs": "0.125rem",
+          "space-2xl": "1.5rem",
+          "gutter-sm": "0.25rem"
+        },
+        "fontFamily": {
+          "mono-md": ["JetBrains Mono"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "headline-xl": ["Plus Jakarta Sans"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "headline-lg": ["Plus Jakarta Sans"],
+          "mono-sm": ["JetBrains Mono"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "mono-xl": ["JetBrains Mono"],
+          "mono-xs": ["JetBrains Mono"],
+          "body-md": ["Plus Jakarta Sans"],
+          "label-sm": ["JetBrains Mono"],
+          "body-sm": ["Plus Jakarta Sans"],
+          "mono-lg": ["JetBrains Mono"],
+          "label-md": ["JetBrains Mono"]
+        },
+        "fontSize": {
+          "mono-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "500"}],
+          "headline-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600"}],
+          "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "body-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+          "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+          "mono-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+          "headline-md": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "mono-xl": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+          "mono-xs": ["9px", {"lineHeight": "12px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+          "body-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+          "label-sm": ["9px", {"lineHeight": "12px", "letterSpacing": "0.08em", "fontWeight": "600"}],
+          "body-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+          "mono-lg": ["16px", {"lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+          "label-md": ["11px", {"lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "600"}]
+        }
+      },
+    },
+  }</script></head><body class="bg-[#05080D] font-body-md text-[#E7EEF5] select-none antialiased"><aside class="fixed left-0 top-0 bottom-0 w-64 bg-[#04090F] border-r border-white/[0.06] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="p-4 flex items-center gap-3 border-b border-white/[0.06] bg-[#060D15]"><img alt="ArthaLens Terminal Emblem" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrH6u7807WJGGmQWoeFfPR_8n34pDNfQxMbZC3uMi-v_G1R4goH6PvKaBLmFdBmX1q7Pj24VF0RzEFa7yzEPPUJo0lGrpsw0CErRRg2W2Ut4WERPnt-2SkOPkCZ7MCNVF6IwsLpCrsTq0n8HrLt3Tpg7XqMS7OOqUTFxQm0MSoE_1MzVadmNjiAJI6ViJgtsIsUm4yNh5vtKg_0ModXU0h0wXnrCBMIUXIky7HAg_6"><div class="flex flex-col min-w-0 flex-1"><div class="flex items-center justify-between"><span class="font-headline-sm text-[13px] font-bold tracking-tight text-[#E7EEF5] uppercase leading-none">ArthaLens</span><span class="font-mono-xs text-[9px] px-1.5 py-0.5 bg-[#0C1722] text-[#25D9D2] border border-[#25D9D2]/25 rounded">v2.4 PRO</span></div><span class="font-mono-xs text-[10px] text-[#617486] truncate mt-1">See Beyond the Noise.</span></div></div><div class="px-4 pt-3 pb-1.5"><span class="font-mono-xs text-[10px] uppercase tracking-wider text-[#617486] font-semibold">Terminal Desks</span></div><nav class="flex flex-col px-2.5 gap-1"><a class="flex items-center gap-3 px-3.5 py-2.5 text-[#8FA4B7] hover:bg-[#0C1722]/70 hover:text-[#E7EEF5] transition-colors rounded text-[13px]" data-path="overview" href="#"><span class="material-symbols-outlined text-[18px] text-[#617486]">grid_view</span><span class="">Overview</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 text-[#8FA4B7] hover:bg-[#0C1722]/70 hover:text-[#E7EEF5] transition-colors rounded text-[13px]" data-path="option-chain" href="#"><span class="material-symbols-outlined text-[18px] text-[#617486]">table_chart</span><span class="">Option Chain</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 text-[#8FA4B7] hover:bg-[#0C1722]/70 hover:text-[#E7EEF5] transition-colors rounded text-[13px]" data-path="expiry-intelligence" href="#"><span class="material-symbols-outlined text-[18px] text-[#617486]">analytics</span><span class="">Expiry Intelligence</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 text-[#8FA4B7] hover:bg-[#0C1722]/70 hover:text-[#E7EEF5] transition-colors rounded text-[13px]" data-path="market-analytics" href="#"><span class="material-symbols-outlined text-[18px] text-[#617486]">query_stats</span><span class="">Market Analytics</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 text-[#8FA4B7] hover:bg-[#0C1722]/70 hover:text-[#E7EEF5] transition-colors rounded text-[13px]" data-path="news-and-insights" href="#"><span class="material-symbols-outlined text-[18px] text-[#617486]">newspaper</span><span class="">News &amp; Insights</span></a><a aria-current="page" class="flex items-center gap-3 px-3.5 py-2.5 transition-colors rounded bg-[#0C1722] text-[#25D9D2] border-l-2 border-[#25D9D2] font-medium text-[13px]" data-path="watchlist" href="#"><span class="material-symbols-outlined text-[18px]">candlestick_chart</span><span class="font-medium">Watchlist</span></a><a class="flex items-center gap-3 px-3.5 py-2.5 text-[#8FA4B7] hover:bg-[#0C1722]/70 hover:text-[#E7EEF5] transition-colors rounded text-[13px]" data-path="alerts" href="#"><span class="material-symbols-outlined text-[18px] text-[#617486]">notifications_active</span><span class="">Alerts</span></a></nav></div><div class="p-3.5 border-t border-white/[0.06] bg-[#060D15]/80 flex flex-col gap-2"><div class="flex items-center justify-between px-2.5 py-1.5 font-mono-xs text-[10px] bg-[#04090F] border border-white/[0.06] rounded"><div class="flex items-center gap-1.5"><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#22C997]"></span><span class="text-[#22C997] font-semibold tracking-wider">LIVE</span><span class="text-[#617486]">| WS</span></div><span class="text-[#8FA4B7]">18ms</span></div><div class="flex items-center justify-between pt-1 px-1"><a class="flex items-center gap-1.5 text-[#8FA4B7] hover:text-[#E7EEF5] transition-colors text-[11px]" data-path="settings" href="#"><span class="material-symbols-outlined text-[15px] text-[#617486]">settings</span><span class="">Settings</span></a><button class="flex items-center gap-1.5 text-[#8FA4B7] hover:text-[#E7EEF5] transition-colors text-[11px]" type="button"><span class="material-symbols-outlined text-[15px] text-[#617486]">terminal</span><span class="">Diagnostics</span></button></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-24 bg-[#071019]/95 backdrop-blur-md z-40 border-b border-white/[0.06] flex flex-col"><div class="h-14 px-6 flex items-center justify-between border-b border-white/[0.04]"><div class="flex items-center gap-3"><div class="flex items-center gap-1.5 text-[#617486] font-mono-xs text-[11px] tracking-wider"><span class="material-symbols-outlined text-[15px] text-[#25D9D2]">table_chart</span><span class="text-[#8FA4B7]">TERMINAL</span><span class="text-[#617486]">/</span><span class="text-[#E7EEF5] font-semibold">WATCHLIST &amp; REALTIME SCANNER</span></div></div><div class="flex-1 max-w-xl mx-8"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3 text-[16px] text-[#617486] pointer-events-none">search</span><input class="w-full bg-[#08111A] border border-white/[0.08] rounded px-4 pl-9 py-1.5 text-[#E7EEF5] font-mono-sm text-[12px] placeholder:text-[#617486] focus:outline-none focus:border-[#25D9D2]/50 transition-colors" placeholder="Search wire bulletins, institutional flow alerts, macro insights... (⌘K)" type="text"></div></div><div class="flex items-center gap-4"><div class="flex items-center gap-2 px-3 py-1 bg-[#0C1722] border border-white/[0.06] rounded-full"><span class="inline-block w-2 h-2 rounded-full bg-[#22C997] shadow-[0_0_6px_rgba(34,201,151,0.4)] animate-pulse"></span><span class="text-[#22C997] font-mono-xs text-[11px] font-semibold tracking-wide">NSE LIVE</span></div><div class="text-[#8FA4B7] font-mono-xs text-[11px] hidden sm:flex items-center gap-1.5"><span class="">Thu, 24 Jul 2025</span><span class="text-[#617486]">•</span><span class="text-[#E7EEF5]">14:38:22 IST</span></div><button class="relative p-1.5 text-[#8FA4B7] hover:text-[#E7EEF5] hover:bg-[#0C1722] rounded-full transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-0.5 right-0.5 w-3.5 h-3.5 bg-[#FF5C6C] text-white font-mono-xs text-[9px] rounded-full flex items-center justify-center leading-none font-bold">3</span></button><div class="w-7 h-7 rounded-full bg-[#25D9D2]/20 border border-[#25D9D2]/40 flex items-center justify-center text-[#25D9D2] font-bold font-mono-sm text-[12px]">Q</div></div></div><div class="h-10 px-6 flex items-center justify-between bg-[#050B12]/80 text-[#E7EEF5] font-mono-sm text-[11px] overflow-x-auto whitespace-nowrap"><div class="flex items-center gap-7"><div class="flex items-center gap-2"><span class="font-semibold text-[#8FA4B7] text-[11px]">NIFTY 50</span><span class="text-[#E7EEF5] font-bold">24,613.80</span><span class="text-[#22C997] font-mono-xs text-[10px] font-medium">+0.52% (+127.40)</span><svg class="w-9 h-2.5 text-[#22C997] stroke-current fill-none" viewBox="0 0 40 12"><path d="M0 10 L8 8 L16 9 L24 4 L32 6 L40 1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div><div class="flex items-center gap-2"><span class="font-semibold text-[#8FA4B7] text-[11px]">BANK NIFTY</span><span class="text-[#E7EEF5] font-bold">56,724.35</span><span class="text-[#22C997] font-mono-xs text-[10px] font-medium">+0.55% (+310.15)</span><svg class="w-9 h-2.5 text-[#22C997] stroke-current fill-none" viewBox="0 0 40 12"><path d="M0 11 L10 9 L20 6 L30 7 L40 2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div><div class="flex items-center gap-2"><span class="font-semibold text-[#8FA4B7] text-[11px]">SENSEX</span><span class="text-[#E7EEF5] font-bold">80,412.17</span><span class="text-[#22C997] font-mono-xs text-[10px] font-medium">+0.53% (+425.80)</span><svg class="w-9 h-2.5 text-[#22C997] stroke-current fill-none" viewBox="0 0 40 12"><path d="M0 9 L10 10 L20 5 L30 6 L40 1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div><div class="flex items-center gap-2"><span class="font-semibold text-[#8FA4B7] text-[11px]">INDIA VIX</span><span class="text-[#E7EEF5] font-bold">11.83</span><span class="text-[#FF5C6C] font-mono-xs text-[10px] font-medium">-5.74% (-0.72)</span><svg class="w-9 h-2.5 text-[#FF5C6C] stroke-current fill-none" viewBox="0 0 40 12"><path d="M0 2 L10 3 L20 7 L30 6 L40 11" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg></div></div><div class="flex items-center gap-5 pl-4 border-l border-white/[0.08] text-[#8FA4B7]"><div class="flex items-center gap-1.5"><span class="text-[#617486] font-mono-xs text-[10px] uppercase">PCR:</span><span class="text-[#22C997] font-bold text-[11px]">0.86</span><span class="text-[#617486] text-[10px]">(Neut-Bull)</span></div><div class="flex items-center gap-1.5"><span class="text-[#617486] font-mono-xs text-[10px] uppercase">MAX PAIN:</span><span class="text-[#F5B84B] font-bold text-[11px]">24,500</span></div><div class="flex items-center gap-1.5"><span class="text-[#617486] font-mono-xs text-[10px] uppercase">NET GEX:</span><span class="text-[#22C997] font-bold text-[11px]">+4,250 Cr</span></div></div></div></header><main class="relative pt-24 bg-[#05080D] w-full px-4 min-h-screen" style="background-color: rgb(5, 8, 13); min-height: 100vh; padding: 108px 24px 20px;"><div class="flex flex-col w-full text-on-surface select-none pb-space-2xl">
+<!-- Top Scanner Control & Watchlist Ribbon -->
+<div class="flex flex-col bg-[#0C1722] rounded-xl border border-white/[0.06] shadow-lg p-3.5 mb-3.5 gap-2.5"><div class="flex items-center justify-between border-b border-white/[0.06] pb-space-sm"><div class="flex items-center gap-space-sm font-mono-xs text-mono-xs tracking-wider"><span class="material-symbols-outlined text-[#25D9D2] text-[16px]">radar</span><span class="text-[#8FA4B7]">DESK_01</span><span class="text-white/20">/</span><span class="text-[#E7EEF5] font-semibold">INSTITUTIONAL QUANT SCANNER</span><span class="px-space-xs py-0.5 bg-[#142232] text-[#25D9D2] border border-[#25D9D2]/30 font-label-sm text-label-sm rounded uppercase">NSE:EQ &amp; F&amp;O</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-[#071019] px-space-md py-1 rounded border border-white/[0.06] text-[#8FA4B7] font-mono-xs text-mono-xs"><span class="w-1.5 h-1.5 rounded-full bg-[#22C997] animate-ping"></span><span class="text-[#8FA4B7] font-medium">FEED SYNC:</span><span class="text-[#22C997] font-semibold tabular-num">0.5s LATENCY</span></div><button class="flex items-center gap-space-xs bg-[#101C28] hover:bg-[#142232] text-[#E7EEF5] px-space-md py-1 rounded border border-white/[0.08] font-mono-xs text-mono-xs transition-colors"><span class="material-symbols-outlined text-[14px] text-[#8FA4B7]">file_download</span><span class="">EXPORT CSV</span></button><button class="flex items-center gap-space-xs bg-[#25D9D2] hover:brightness-110 text-[#05080D] font-headline-sm text-headline-sm font-bold px-space-lg py-1 rounded shadow-[0_0_12px_rgba(37,217,210,0.25)] transition-all"><span class="material-symbols-outlined text-[16px]">add</span><span class="">ADD SYMBOL</span></button></div></div><div class="flex items-center justify-between gap-space-md pt-space-xs overflow-x-auto whitespace-nowrap"><div class="flex items-center gap-space-xs"><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded font-label-md text-label-md text-[#8FA4B7] hover:text-[#E7EEF5] hover:bg-[#101C28] transition-all"><span class="">BENCHMARKS &amp; INDICES</span><span class="px-1 py-0.2 bg-[#101C28] rounded text-[#8FA4B7] font-mono-xs text-mono-xs tabular-num">4</span></button><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded font-label-md text-label-md bg-[#101C28] text-[#25D9D2] border-b-2 border-[#25D9D2] shadow-[inset_0_0_12px_rgba(37,217,210,0.12)] transition-all"><span class="font-bold">HIGH CONVICTION DERIVATIVES</span><span class="px-1 py-0.2 bg-[#25D9D2]/20 text-[#25D9D2] rounded font-mono-xs text-mono-xs font-bold tabular-num">12</span></button><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded font-label-md text-label-md text-[#8FA4B7] hover:text-[#E7EEF5] hover:bg-[#101C28] transition-all"><span class="">HEAVYWEIGHT CONSTITUENTS</span><span class="px-1 py-0.2 bg-[#101C28] rounded text-[#8FA4B7] font-mono-xs text-mono-xs tabular-num">18</span></button><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded font-label-md text-label-md text-[#8FA4B7] hover:text-[#E7EEF5] hover:bg-[#101C28] transition-all"><span class="">HIGH GEX &amp; SQUEEZE</span><span class="px-1 py-0.2 bg-[#101C28] rounded text-[#8FA4B7] font-mono-xs text-mono-xs tabular-num">8</span></button><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded font-label-md text-label-md text-[#8FA4B7] hover:text-[#E7EEF5] hover:bg-[#101C28] transition-all"><span class="">OI &amp; VOL SPIKES</span><span class="px-1 py-0.2 bg-[#22C997]/15 text-[#22C997] border border-[#22C997]/30 rounded font-mono-xs text-mono-xs font-bold tabular-num">15</span></button><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded font-label-md text-label-md text-[#8FA4B7] hover:text-[#E7EEF5] hover:bg-[#101C28] transition-all"><span class="">CUSTOM QUANT 01</span><span class="px-1 py-0.2 bg-[#101C28] rounded text-[#8FA4B7] font-mono-xs text-mono-xs tabular-num">6</span></button><button class="flex items-center gap-space-xs px-space-sm py-1 rounded border border-dashed border-white/10 text-[#8FA4B7] hover:text-[#25D9D2] hover:border-[#25D9D2] transition-all font-mono-xs text-mono-xs"><span class="material-symbols-outlined text-[13px]">add</span><span class="">NEW LIST</span></button></div><div class="flex items-center gap-space-md font-mono-xs text-mono-xs"><div class="flex items-center bg-[#071019] p-0.5 rounded border border-white/[0.06]"><button class="px-space-md py-0.5 rounded bg-[#101C28] text-[#25D9D2] font-bold">ALL</button><button class="px-space-md py-0.5 rounded text-[#8FA4B7] hover:text-[#E7EEF5]">INDEX</button><button class="px-space-md py-0.5 rounded text-[#8FA4B7] hover:text-[#E7EEF5]">EQUITIES</button><button class="px-space-md py-0.5 rounded text-[#8FA4B7] hover:text-[#E7EEF5]">F&amp;O ONLY</button></div><div class="flex items-center bg-[#071019] p-0.5 rounded border border-white/[0.06]"><button class="px-space-sm py-0.5 rounded bg-[#101C28] text-[#25D9D2] flex items-center gap-space-xs" title="Table Matrix Mode"><span class="material-symbols-outlined text-[14px]">table_rows</span></button><button class="px-space-sm py-0.5 rounded text-[#8FA4B7] hover:text-[#E7EEF5] flex items-center gap-space-xs" title="Quant Heatmap Mode"><span class="material-symbols-outlined text-[14px]">grid_view</span></button></div></div></div></div>
+<!-- Breadth, Flow & Liquidity Ribbon -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3.5"><div class="flex items-center justify-between px-space-md py-space-xs bg-[#0C1722] border border-white/[0.06] rounded"><div class="flex flex-col"><div class="flex items-center gap-space-xs text-[#8FA4B7] font-label-sm text-label-sm"><span class="">WATCHLIST BREADTH</span><span class="text-[#22C997] font-mono-xs text-mono-xs font-semibold tabular-num">3.00x RATIO</span></div><div class="flex items-center gap-space-md mt-0.5 font-mono-sm text-mono-sm"><span class="text-[#22C997] font-semibold tabular-num">ADV 18</span><span class="text-white/20">|</span><span class="text-[#FF5C6C] font-semibold tabular-num">DEC 6</span><span class="text-white/20">|</span><span class="text-[#8FA4B7] font-medium tabular-num">NEUT 2</span></div></div><div class="flex flex-col text-right"><span class="text-[#8FA4B7] font-label-sm text-label-sm uppercase">CUMULATIVE NET DELTA</span><span class="text-[#22C997] font-mono-md text-mono-md font-bold leading-tight tabular-num">+₹2,840.40 Cr</span></div></div><div class="flex items-center justify-between px-space-md py-space-xs bg-[#0C1722] border border-white/[0.06] rounded"><div class="flex flex-col"><div class="flex items-center gap-space-xs text-[#8FA4B7] font-label-sm text-label-sm"><span class="">DERIVATIVES NOTIONAL OI</span><span class="text-[#22C997] font-mono-xs text-mono-xs tabular-num">+4.8% DAY Δ</span></div><div class="flex items-center gap-space-xs mt-0.5"><span class="font-mono-md text-mono-md font-bold text-[#E7EEF5] tabular-num">₹48,920.80 Cr</span><span class="text-[#8FA4B7] font-mono-xs text-mono-xs tabular-num">(94.2L Lots)</span></div></div><div class="flex flex-col text-right"><span class="text-[#8FA4B7] font-label-sm text-label-sm uppercase">24H TRADED VOLUME</span><span class="text-[#25D9D2] font-mono-md text-mono-md font-bold leading-tight tabular-num">4.82M Contracts</span></div></div><div class="flex flex-col justify-between px-space-md py-space-xs bg-[#0C1722] border border-white/[0.06] rounded"><div class="flex items-center justify-between text-[#8FA4B7] font-label-sm text-label-sm"><span class="">QUANT SIGNAL ALIGNMENT</span><span class="text-[#25D9D2] font-mono-xs text-mono-xs font-semibold">BULLISH SKEW</span></div><div class="w-full h-2 bg-[#101C28] rounded-full overflow-hidden flex my-1"><div class="h-full bg-[#22C997] transition-all" style="width: 68%" title="68% Bullish Alignment"></div><div class="h-full bg-white/20 transition-all" style="width: 20%" title="20% Neutral Pinning"></div><div class="h-full bg-[#FF5C6C] transition-all" style="width: 12%" title="12% Distribution Risk"></div></div><div class="flex items-center justify-between font-mono-xs text-mono-xs text-[#8FA4B7] leading-none"><span class="text-[#22C997] font-medium tabular-num">68% Bullish</span><span class="text-[#8FA4B7] font-medium tabular-num">20% Pinning</span><span class="text-[#FF5C6C] font-medium tabular-num">12% Gamma Risk</span></div></div></div>
+<!-- Main Workstation Layout: 16-Col Matrix (11 cols Table / 5 cols Context Inspector) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter px-gutter-lg pt-space-sm items-start">
+<!-- LEFT PANE: Precision Watchlist Matrix Table (8 or 9 cols on wide displays) -->
+<div class="xl:col-span-8 flex flex-col bg-[#0C1722] border border-white/[0.06] rounded-xl overflow-hidden shadow-lg">
+<!-- Sorting & Filter Table Command Bar -->
+<div class="px-space-md py-space-xs bg-surface-container-low border-b border-outline-variant/30 flex items-center justify-between flex-wrap gap-space-sm font-mono-xs text-mono-xs">
+<div class="flex items-center gap-space-md">
+<span class="text-outline uppercase font-label-sm text-label-sm">ORDER BY:</span>
+<div class="flex items-center gap-space-xs">
+<button class="text-primary-container font-semibold bg-surface-container px-space-xs py-0.5 rounded border border-primary-container/30 flex items-center gap-0.5">
+<span class="">PRIORITY</span>
+<span class="material-symbols-outlined text-[12px]">arrow_downward</span>
+</button>
+<button class="text-outline hover:text-on-surface px-space-xs py-0.5">% CHG</button>
+<button class="text-outline hover:text-on-surface px-space-xs py-0.5">TOTAL OI</button>
+<button class="text-outline hover:text-on-surface px-space-xs py-0.5">RVOL</button>
+<button class="text-outline hover:text-on-surface px-space-xs py-0.5">IV %ILE</button>
+<button class="text-outline hover:text-on-surface px-space-xs py-0.5">GEX WT</button>
+</div>
+</div>
+<div class="flex items-center gap-space-md text-outline">
+<span class="font-mono-xs text-mono-xs">SHOWING 9 OF 12 INSTRUMENTS</span>
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container"></div>
+<span class="font-mono-xs text-mono-xs text-on-surface-variant">L1 TICK PIPELINE</span>
+</div>
+</div>
+<!-- Quantitative Scrollable Grid -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse tabular-num">
+<thead>
+<tr class="bg-[#060D15] border-b border-white/[0.06] font-mono-xs text-[9px] text-[#617486] uppercase tracking-wider">
+<th class="py-space-sm px-space-md w-24">QUANT SCORE</th>
+<th class="py-space-sm px-space-md">SYMBOL &amp; SECTOR</th>
+<th class="py-space-sm px-space-md text-right">LTP / 24H CHG</th>
+<th class="py-space-sm px-space-md text-center">RANGE / VWAP</th>
+<th class="py-space-sm px-space-md text-right">VOL (RVOL)</th>
+<th class="py-space-sm px-space-md text-left">OI INTERPRETATION</th>
+<th class="py-space-sm px-space-md text-right">IV (%ILE)</th>
+<th class="py-space-sm px-space-md text-right">PCR</th>
+<th class="py-space-sm px-space-md text-right">NET GEX</th>
+<th class="py-space-sm px-space-sm text-center w-20">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/15 font-mono-sm text-mono-sm">
+<!-- ROW 1: NIFTY 50 -->
+<tr class="group hover:bg-surface-container-high/60 transition-colors border-l-2 border-transparent hover:border-primary cursor-pointer">
+<!-- Score -->
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-primary font-mono-md text-mono-md">96</span>
+<div class="flex gap-0.5">
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+</div>
+</div>
+</td>
+<!-- Symbol -->
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">NIFTY 50</span>
+<span class="px-1 py-0.2 bg-surface-container-highest text-outline font-mono-xs text-mono-xs rounded border border-outline-variant/20">INDEX</span>
+</div>
+<span class="font-mono-xs text-mono-xs text-outline">28-NOV 75 LOT</span>
+</div>
+</td>
+<!-- LTP & Chg -->
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-bold text-on-surface font-mono-md text-mono-md">24,613.80</span>
+<div class="flex items-center gap-1 text-secondary font-mono-xs text-mono-xs">
+<span class="">+127.40</span>
+<span class="font-semibold">(+0.52%)</span>
+</div>
+</div>
+</td>
+<!-- Day Range / VWAP -->
+<td class="py-space-sm px-space-md text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-0.5">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute left-0 top-0 bottom-0 bg-secondary/80 rounded-full" style="width: 78%"></div>
+<div class="absolute top-0 bottom-0 w-1 bg-primary-container" style="left: 64%" title="VWAP: 24,582"></div>
+</div>
+<span class="font-mono-xs text-mono-xs text-secondary">+0.13% vs VWAP</span>
+</div>
+</td>
+<!-- Volume & RVOL -->
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-on-surface">14.2M</span>
+<span class="font-mono-xs text-mono-xs text-primary-container font-medium">1.8x RVOL</span>
+</div>
+</td>
+<!-- OI & Build-up -->
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">1.48 Cr</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    LONG BUILD-UP (+8.4L)
+                  </span>
+</div>
+</td>
+<!-- IV / %ile -->
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-on-surface font-medium">11.68%</span>
+<span class="font-mono-xs text-mono-xs text-outline">14th %ile (LOW)</span>
+</div>
+</td>
+<!-- PCR -->
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-bold text-secondary">0.86</span>
+</div>
+</td>
+<!-- GEX -->
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-secondary font-bold font-mono-xs text-mono-xs">+₹4,250 Cr</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">LONG γ</span>
+</div>
+</td>
+<!-- Actions -->
+<td class="py-space-sm px-space-sm text-center whitespace-nowrap">
+<div class="flex items-center justify-center gap-1 text-outline">
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors" title="View Chain">
+<span class="material-symbols-outlined text-[15px]">candlestick_chart</span>
+</button>
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors" title="Alerts">
+<span class="material-symbols-outlined text-[15px]">notifications_active</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2: BANK NIFTY -->
+<tr class="group hover:bg-surface-container-high/60 transition-colors border-l-2 border-transparent hover:border-primary cursor-pointer">
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-primary font-mono-md text-mono-md">94</span>
+<div class="flex gap-0.5">
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-outline-variant/60"></span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">BANK NIFTY</span>
+<span class="px-1 py-0.2 bg-surface-container-highest text-outline font-mono-xs text-mono-xs rounded border border-outline-variant/20">INDEX</span>
+</div>
+<span class="font-mono-xs text-mono-xs text-outline">28-NOV 30 LOT</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-bold text-on-surface font-mono-md text-mono-md">56,724.35</span>
+<div class="flex items-center gap-1 text-secondary font-mono-xs text-mono-xs">
+<span class="">+310.15</span>
+<span class="font-semibold">(+0.55%)</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-0.5">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute left-0 top-0 bottom-0 bg-secondary/80 rounded-full" style="width: 82%"></div>
+<div class="absolute top-0 bottom-0 w-1 bg-primary-container" style="left: 70%" title="VWAP: 56,540"></div>
+</div>
+<span class="font-mono-xs text-mono-xs text-secondary">+0.32% vs VWAP</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-on-surface">9.8M</span>
+<span class="font-mono-xs text-mono-xs text-secondary font-medium">2.1x RVOL</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">86.4L</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    LONG BUILD-UP (+12.1L)
+                  </span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-on-surface font-medium">14.20%</span>
+<span class="font-mono-xs text-mono-xs text-outline">22nd %ile</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-bold text-secondary">0.94</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-secondary font-bold font-mono-xs text-mono-xs">+₹1,820 Cr</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">LONG γ</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-center whitespace-nowrap">
+<div class="flex items-center justify-center gap-1 text-outline">
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">candlestick_chart</span>
+</button>
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">notifications_active</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: INFY (ACTIVE SELECTED ROW) -->
+<tr class="bg-[#0C1722] text-[#25D9D2] border-l-2 border-[#25D9D2] shadow-[inset_0_0_14px_rgba(37,217,210,0.08)] cursor-pointer"><td class="py-space-sm px-space-md whitespace-nowrap"><div class="flex items-center gap-1.5"><span class="font-bold text-[#25D9D2] font-mono-md text-mono-md tabular-num">91</span><div class="flex gap-0.5"><span class="w-1 h-3 rounded-xs bg-[#25D9D2]"></span><span class="w-1 h-3 rounded-xs bg-[#25D9D2]"></span><span class="w-1 h-3 rounded-xs bg-[#25D9D2]"></span><span class="w-1 h-3 rounded-xs bg-[#25D9D2]"></span><span class="w-1 h-3 rounded-xs bg-white/10"></span></div></div></td><td class="py-space-sm px-space-md"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm font-bold text-[#E7EEF5]">INFY</span><span class="px-1 py-0.2 bg-[#142232] text-[#25D9D2] font-mono-xs text-mono-xs rounded border border-[#25D9D2]/30">IT</span><span class="w-1.5 h-1.5 rounded-full bg-[#25D9D2] animate-ping"></span></div><span class="font-mono-xs text-mono-xs text-[#25D9D2]">SELECTED INSPECTION</span></div></td><td class="py-space-sm px-space-md text-right whitespace-nowrap"><div class="flex flex-col items-end"><span class="font-bold text-[#E7EEF5] font-mono-md text-mono-md tabular-num">1,612.35</span><div class="flex items-center gap-1 text-[#22C997] font-mono-xs text-mono-xs tabular-num"><span class="">+16.25</span><span class="font-semibold">(+1.02%)</span></div></div></td><td class="py-space-sm px-space-md text-center min-w-[120px]"><div class="flex flex-col items-center gap-0.5"><div class="w-24 h-1.5 bg-[#101C28] rounded-full overflow-hidden relative"><div class="absolute left-0 top-0 bottom-0 bg-[#22C997] rounded-full" style="width: 88%"></div><div class="absolute top-0 bottom-0 w-1 bg-[#25D9D2]" style="left: 60%" title="VWAP: 1,601.5"></div></div><span class="font-mono-xs text-mono-xs text-[#22C997] font-semibold tabular-num">+0.68% vs VWAP</span></div></td><td class="py-space-sm px-space-md text-right whitespace-nowrap"><div class="flex flex-col items-end"><span class="font-semibold text-[#E7EEF5] tabular-num">5.1M</span><span class="font-mono-xs text-mono-xs text-[#22C997] font-bold bg-[#22C997]/15 px-1 rounded tabular-num">2.8x SPURT</span></div></td><td class="py-space-sm px-space-md whitespace-nowrap"><div class="flex flex-col"><span class="font-semibold text-[#E7EEF5] tabular-num">34.2L</span><span class="font-label-sm text-label-sm text-[#22C997] font-semibold uppercase flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#22C997]"></span>LONG BUILD-UP (+6.1L)</span></div></td><td class="py-space-sm px-space-md text-right whitespace-nowrap"><div class="flex flex-col items-end"><span class="text-[#E7EEF5] font-medium tabular-num">18.90%</span><span class="font-mono-xs text-mono-xs text-[#F5B84B] tabular-num">45th %ile (ELEV)</span></div></td><td class="py-space-sm px-space-md text-right whitespace-nowrap"><div class="flex items-center justify-end gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#22C997]"></span><span class="font-bold text-[#22C997] tabular-num">1.18</span></div></td><td class="py-space-sm px-space-md text-right whitespace-nowrap"><div class="flex flex-col items-end"><span class="text-[#22C997] font-bold font-mono-xs text-mono-xs tabular-num">+₹160 Cr</span><span class="font-label-sm text-label-sm text-[#22C997] font-medium uppercase">LONG γ</span></div></td><td class="py-space-sm px-space-sm text-center whitespace-nowrap"><div class="flex items-center justify-center gap-1 text-[#25D9D2]"><button class="hover:text-[#E7EEF5] p-1 rounded bg-[#101C28] transition-colors"><span class="material-symbols-outlined text-[15px]">candlestick_chart</span></button><button class="hover:text-[#E7EEF5] p-1 rounded bg-[#101C28] transition-colors"><span class="material-symbols-outlined text-[15px]">flash_on</span></button></div></td></tr>
+<!-- ROW 4: TATAMOTORS (VOL SPIKE) -->
+<tr class="group hover:bg-surface-container-high/60 transition-colors border-l-2 border-transparent hover:border-primary cursor-pointer">
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-primary font-mono-md text-mono-md">89</span>
+<div class="flex gap-0.5">
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-outline-variant/60"></span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">TATAMOTORS</span>
+<span class="px-1 py-0.2 bg-surface-container-highest text-outline font-mono-xs text-mono-xs rounded border border-outline-variant/20">AUTO</span>
+</div>
+<span class="font-mono-xs text-mono-xs text-outline">28-NOV 1425 LOT</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-bold text-on-surface font-mono-md text-mono-md">794.15</span>
+<div class="flex items-center gap-1 text-secondary font-mono-xs text-mono-xs">
+<span class="">+11.35</span>
+<span class="font-semibold">(+1.45%)</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-0.5">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute left-0 top-0 bottom-0 bg-secondary rounded-full" style="width: 92%"></div>
+<div class="absolute top-0 bottom-0 w-1 bg-primary-container" style="left: 65%" title="VWAP: 786.4"></div>
+</div>
+<span class="font-mono-xs text-mono-xs text-secondary font-semibold">+0.98% vs VWAP</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-on-surface">8.4M</span>
+<span class="font-mono-xs text-mono-xs text-secondary font-bold bg-secondary/15 px-1 rounded animate-pulse">3.2x SPIKE</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">48.2L</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    LONG BUILD-UP (+8.2L)
+                  </span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-on-surface font-medium">24.20%</span>
+<span class="font-mono-xs text-mono-xs text-tertiary-fixed-dim">68th %ile (HIGH)</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-bold text-secondary">1.24</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-secondary font-bold font-mono-xs text-mono-xs">+₹75 Cr</span>
+<span class="font-label-sm text-label-sm text-primary-fixed uppercase">BREAKOUT</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-center whitespace-nowrap">
+<div class="flex items-center justify-center gap-1 text-outline">
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">candlestick_chart</span>
+</button>
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">notifications_active</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5: RELIANCE -->
+<tr class="group hover:bg-surface-container-high/60 transition-colors border-l-2 border-transparent hover:border-primary cursor-pointer">
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-primary font-mono-md text-mono-md">88</span>
+<div class="flex gap-0.5">
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-outline-variant/60"></span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">RELIANCE</span>
+<span class="px-1 py-0.2 bg-surface-container-highest text-outline font-mono-xs text-mono-xs rounded border border-outline-variant/20">ENERGY</span>
+</div>
+<span class="font-mono-xs text-mono-xs text-outline">28-NOV 250 LOT</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-bold text-on-surface font-mono-md text-mono-md">2,985.40</span>
+<div class="flex items-center gap-1 text-secondary font-mono-xs text-mono-xs">
+<span class="">+11.25</span>
+<span class="font-semibold">(+0.38%)</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-0.5">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute left-0 top-0 bottom-0 bg-secondary/80 rounded-full" style="width: 70%"></div>
+<div class="absolute top-0 bottom-0 w-1 bg-primary-container" style="left: 55%" title="VWAP: 2,976.0"></div>
+</div>
+<span class="font-mono-xs text-mono-xs text-secondary">+0.31% vs VWAP</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-on-surface">4.8M</span>
+<span class="font-mono-xs text-mono-xs text-outline font-medium">1.4x RVOL</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">42.1L</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    LONG BUILD-UP (+2.4L)
+                  </span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-on-surface font-medium">16.40%</span>
+<span class="font-mono-xs text-mono-xs text-outline">31st %ile</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-bold text-secondary">0.92</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-secondary font-bold font-mono-xs text-mono-xs">+₹240 Cr</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">LONG γ</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-center whitespace-nowrap">
+<div class="flex items-center justify-center gap-1 text-outline">
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">candlestick_chart</span>
+</button>
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">notifications_active</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 6: ICICIBANK -->
+<tr class="group hover:bg-surface-container-high/60 transition-colors border-l-2 border-transparent hover:border-primary cursor-pointer">
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-primary font-mono-md text-mono-md">85</span>
+<div class="flex gap-0.5">
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-outline-variant/60"></span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">ICICIBANK</span>
+<span class="px-1 py-0.2 bg-surface-container-highest text-outline font-mono-xs text-mono-xs rounded border border-outline-variant/20">PVT BANK</span>
+</div>
+<span class="font-mono-xs text-mono-xs text-outline">28-NOV 700 LOT</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-bold text-on-surface font-mono-md text-mono-md">1,268.90</span>
+<div class="flex items-center gap-1 text-secondary font-mono-xs text-mono-xs">
+<span class="">+9.30</span>
+<span class="font-semibold">(+0.74%)</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-0.5">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute left-0 top-0 bottom-0 bg-secondary/80 rounded-full" style="width: 75%"></div>
+<div class="absolute top-0 bottom-0 w-1 bg-primary-container" style="left: 60%" title="VWAP: 1,262.1"></div>
+</div>
+<span class="font-mono-xs text-mono-xs text-secondary">+0.54% vs VWAP</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-on-surface">3.9M</span>
+<span class="font-mono-xs text-mono-xs text-primary-container font-medium">1.6x RVOL</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">29.5L</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    LONG BUILD-UP (+1.9L)
+                  </span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-on-surface font-medium">14.80%</span>
+<span class="font-mono-xs text-mono-xs text-outline">19th %ile</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-bold text-secondary">1.05</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-secondary font-bold font-mono-xs text-mono-xs">+₹110 Cr</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">LONG γ</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-center whitespace-nowrap">
+<div class="flex items-center justify-center gap-1 text-outline">
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">candlestick_chart</span>
+</button>
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">notifications_active</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 7: HDFCBANK (SHORT BUILD-UP) -->
+<tr class="group hover:bg-surface-container-high/60 transition-colors border-l-2 border-transparent hover:border-error cursor-pointer">
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-on-surface-variant font-mono-md text-mono-md">82</span>
+<div class="flex gap-0.5">
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-outline-variant/60"></span>
+<span class="w-1 h-3 rounded-xs bg-outline-variant/60"></span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">HDFCBANK</span>
+<span class="px-1 py-0.2 bg-surface-container-highest text-outline font-mono-xs text-mono-xs rounded border border-outline-variant/20">PVT BANK</span>
+</div>
+<span class="font-mono-xs text-mono-xs text-outline">28-NOV 550 LOT</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-bold text-on-surface font-mono-md text-mono-md">1,742.60</span>
+<div class="flex items-center gap-1 text-error font-mono-xs text-mono-xs">
+<span class="">-3.65</span>
+<span class="font-semibold">(-0.21%)</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-0.5">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute left-0 top-0 bottom-0 bg-error/80 rounded-full" style="width: 38%"></div>
+<div class="absolute top-0 bottom-0 w-1 bg-primary-container" style="left: 54%" title="VWAP: 1,748.2"></div>
+</div>
+<span class="font-mono-xs text-mono-xs text-error">-0.32% vs VWAP</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-on-surface">6.2M</span>
+<span class="font-mono-xs text-mono-xs text-outline font-medium">0.9x RVOL</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">58.6L</span>
+<span class="font-label-sm text-label-sm text-error font-semibold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                    SHORT BUILD-UP (+4.8L)
+                  </span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-on-surface font-medium">15.10%</span>
+<span class="font-mono-xs text-mono-xs text-outline">28th %ile</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="font-bold text-error">0.78</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-error font-bold font-mono-xs text-mono-xs">-₹85 Cr</span>
+<span class="font-label-sm text-label-sm text-error uppercase">SHORT γ</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-center whitespace-nowrap">
+<div class="flex items-center justify-center gap-1 text-outline">
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">candlestick_chart</span>
+</button>
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">notifications_active</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 8: TCS -->
+<tr class="group hover:bg-surface-container-high/60 transition-colors border-l-2 border-transparent hover:border-primary cursor-pointer">
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-on-surface-variant font-mono-md text-mono-md">76</span>
+<div class="flex gap-0.5">
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-outline-variant/60"></span>
+<span class="w-1 h-3 rounded-xs bg-outline-variant/60"></span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">TCS</span>
+<span class="px-1 py-0.2 bg-surface-container-highest text-outline font-mono-xs text-mono-xs rounded border border-outline-variant/20">IT</span>
+</div>
+<span class="font-mono-xs text-mono-xs text-outline">28-NOV 175 LOT</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-bold text-on-surface font-mono-md text-mono-md">4,148.50</span>
+<div class="flex items-center gap-1 text-secondary font-mono-xs text-mono-xs">
+<span class="">+26.80</span>
+<span class="font-semibold">(+0.65%)</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-0.5">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute left-0 top-0 bottom-0 bg-secondary/80 rounded-full" style="width: 65%"></div>
+<div class="absolute top-0 bottom-0 w-1 bg-primary-container" style="left: 50%" title="VWAP: 4,130.0"></div>
+</div>
+<span class="font-mono-xs text-mono-xs text-secondary">+0.44% vs VWAP</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-on-surface">1.8M</span>
+<span class="font-mono-xs text-mono-xs text-outline font-medium">1.2x RVOL</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">19.8L</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    LONG BUILD-UP (+0.8L)
+                  </span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-on-surface font-medium">15.60%</span>
+<span class="font-mono-xs text-mono-xs text-outline">24th %ile</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-bold text-secondary">0.88</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-primary-container font-bold font-mono-xs text-mono-xs">+₹95 Cr</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">PIN RISK</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-center whitespace-nowrap">
+<div class="flex items-center justify-center gap-1 text-outline">
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">candlestick_chart</span>
+</button>
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">notifications_active</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 9: SBIN -->
+<tr class="group hover:bg-surface-container-high/60 transition-colors border-l-2 border-transparent hover:border-error cursor-pointer">
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-on-surface-variant font-mono-md text-mono-md">71</span>
+<div class="flex gap-0.5">
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-primary-container"></span>
+<span class="w-1 h-3 rounded-xs bg-outline-variant/60"></span>
+<span class="w-1 h-3 rounded-xs bg-outline-variant/60"></span>
+<span class="w-1 h-3 rounded-xs bg-outline-variant/60"></span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">SBIN</span>
+<span class="px-1 py-0.2 bg-surface-container-highest text-outline font-mono-xs text-mono-xs rounded border border-outline-variant/20">PSU BANK</span>
+</div>
+<span class="font-mono-xs text-mono-xs text-outline">28-NOV 750 LOT</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-bold text-on-surface font-mono-md text-mono-md">814.30</span>
+<div class="flex items-center gap-1 text-error font-mono-xs text-mono-xs">
+<span class="">-3.70</span>
+<span class="font-semibold">(-0.45%)</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-center min-w-[120px]">
+<div class="flex flex-col items-center gap-0.5">
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute left-0 top-0 bottom-0 bg-error/80 rounded-full" style="width: 25%"></div>
+<div class="absolute top-0 bottom-0 w-1 bg-primary-container" style="left: 62%" title="VWAP: 819.5"></div>
+</div>
+<span class="font-mono-xs text-mono-xs text-error">-0.63% vs VWAP</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-on-surface">4.2M</span>
+<span class="font-mono-xs text-mono-xs text-outline font-medium">1.1x RVOL</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">38.4L</span>
+<span class="font-label-sm text-label-sm text-error font-semibold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                    SHORT BUILD-UP (+3.1L)
+                  </span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-on-surface font-medium">17.80%</span>
+<span class="font-mono-xs text-mono-xs text-outline">34th %ile</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="font-bold text-error">0.72</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md text-right whitespace-nowrap">
+<div class="flex flex-col items-end">
+<span class="text-error font-bold font-mono-xs text-mono-xs">-₹45 Cr</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">SHORT γ</span>
+</div>
+</td>
+<td class="py-space-sm px-space-sm text-center whitespace-nowrap">
+<div class="flex items-center justify-center gap-1 text-outline">
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">candlestick_chart</span>
+</button>
+<button class="hover:text-primary-container p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[15px]">notifications_active</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Compact Table Pager / Status Footnote -->
+<div class="px-space-md py-space-xs bg-surface-container-low border-t border-outline-variant/30 flex items-center justify-between font-mono-xs text-mono-xs text-outline">
+<div class="flex items-center gap-space-md">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-xs bg-primary-container"></span> QUANT CONFIDENCE &gt; 85%
+          </span>
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-xs bg-secondary"></span> BULLISH VOL BUILD-UP
+          </span>
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-xs bg-error"></span> SHORT DRIFT / VEGA RISK
+          </span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="">LATENCY: 12ms</span>
+<span class="">|</span>
+<span class="text-secondary font-semibold">FEED NORMAL</span>
+</div>
+</div>
+</div>
+<!-- RIGHT PANE: Selected Symbol Quantitative Telemetry & Context Inspector (4 or 5 cols) -->
+<div class="xl:col-span-4 flex flex-col bg-[#0C1722] border border-white/[0.06] rounded-xl overflow-hidden shadow-lg"><div class="p-space-md bg-[#101C28] border-b border-white/[0.06] flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-2 h-2 rounded-full bg-[#25D9D2] animate-ping"></div><span class="font-headline-sm text-headline-sm font-bold text-[#E7EEF5]">INFY</span><span class="text-[#8FA4B7] font-mono-xs text-mono-xs">INFOSYS LTD</span></div><div class="flex items-center gap-space-xs"><span class="px-1.5 py-0.5 bg-[#22C997]/15 text-[#22C997] border border-[#22C997]/30 font-label-sm text-label-sm font-bold rounded">MOMENTUM SQUEEZE</span></div></div><div class="p-space-md border-b border-white/[0.06] flex items-baseline justify-between bg-[#071019]/60"><div><div class="font-mono-xl text-mono-xl font-bold text-[#E7EEF5] tracking-tight tabular-num">₹1,612.35</div><div class="flex items-center gap-space-xs text-[#22C997] font-mono-xs text-mono-xs mt-0.5 tabular-num"><span class="material-symbols-outlined text-[14px]">arrow_drop_up</span><span class="font-bold">+16.25 (+1.02%)</span><span class="text-[#8FA4B7]">TODAY</span></div></div><div class="text-right flex flex-col items-end"><span class="font-label-sm text-label-sm text-[#8FA4B7] uppercase">DAY VWAP SPREAD</span><span class="font-mono-md text-mono-md font-bold text-[#22C997] tabular-num">+0.68%</span><span class="font-mono-xs text-mono-xs text-[#8FA4B7] tabular-num">VWAP ₹1,601.50</span></div></div><div class="p-space-md flex flex-col gap-space-md"><div class="flex flex-col gap-1"><div class="flex items-center justify-between font-label-sm text-label-sm text-[#8FA4B7]"><span class="">AGGRESSIVE ORDER FLOW PRESSURE</span><span class="text-[#22C997] font-mono-xs text-mono-xs font-bold tabular-num">58% BUY DOMINANCE</span></div><div class="w-full h-3 bg-[#071019] rounded overflow-hidden flex border border-white/[0.06]"><div class="h-full bg-[#22C997] transition-all" style="width: 58%" title="Buyers: 58%"></div><div class="h-full bg-[#FF5C6C] transition-all" style="width: 42%" title="Sellers: 42%"></div></div><div class="flex items-center justify-between font-mono-xs text-mono-xs text-[#8FA4B7] pt-0.5"><span class="text-[#22C997] tabular-num">Bid Absorption: 2.96M</span><span class="text-[#FF5C6C] tabular-num">Ask Liquidity: 2.14M</span></div></div><div class="p-space-sm bg-[#071019] rounded border border-white/[0.06] flex flex-col gap-space-xs"><div class="flex items-center justify-between font-label-sm text-label-sm text-[#8FA4B7]"><span class="">STRIKE CONCENTRATION PINNING</span><span class="text-[#25D9D2] font-mono-xs text-mono-xs">28-NOV EXPIRY</span></div><div class="grid grid-cols-3 gap-space-sm text-center pt-1"><div class="flex flex-col bg-[#0C1722] p-space-xs rounded border border-white/[0.04]"><span class="font-mono-xs text-mono-xs text-[#8FA4B7] uppercase">PUT WALL</span><span class="font-mono-sm text-mono-sm font-bold text-[#22C997] tabular-num">₹1,580</span><span class="font-mono-xs text-mono-xs text-[#8FA4B7] tabular-num">18.4L OI</span></div><div class="flex flex-col bg-[#0C1722] p-space-xs rounded border border-[#25D9D2]/35 shadow-[0_0_8px_rgba(37,217,210,0.1)]"><span class="font-mono-xs text-mono-xs text-[#25D9D2] uppercase">MAX PAIN</span><span class="font-mono-sm text-mono-sm font-bold text-[#E7EEF5] tabular-num">₹1,600</span><span class="font-mono-xs text-mono-xs text-[#8FA4B7]">Strike Pin</span></div><div class="flex flex-col bg-[#0C1722] p-space-xs rounded border border-white/[0.04]"><span class="font-mono-xs text-mono-xs text-[#8FA4B7] uppercase">CALL WALL</span><span class="font-mono-sm text-mono-sm font-bold text-[#FF5C6C] tabular-num">₹1,650</span><span class="font-mono-xs text-mono-xs text-[#8FA4B7] tabular-num">24.2L OI</span></div></div></div><div class="grid grid-cols-2 gap-space-sm"><div class="p-space-sm bg-[#071019] rounded border border-white/[0.06] flex flex-col"><span class="font-label-sm text-label-sm text-[#8FA4B7] uppercase">ATM IV / SKEW</span><div class="flex items-baseline gap-1 mt-1"><span class="font-mono-md text-mono-md font-bold text-[#E7EEF5] tabular-num">18.9%</span><span class="font-mono-xs text-mono-xs text-[#22C997] font-semibold tabular-num">+0.82%</span></div><span class="font-mono-xs text-mono-xs text-[#8FA4B7] mt-0.5">Call demand expanding</span></div><div class="p-space-sm bg-[#071019] rounded border border-white/[0.06] flex flex-col"><span class="font-label-sm text-label-sm text-[#8FA4B7] uppercase">DEALER GEX STATE</span><div class="flex items-baseline gap-1 mt-1"><span class="font-mono-md text-mono-md font-bold text-[#22C997] tabular-num">+₹160 Cr</span><span class="font-mono-xs text-mono-xs text-[#25D9D2] font-semibold">LONG γ</span></div><span class="font-mono-xs text-mono-xs text-[#8FA4B7] mt-0.5">Mean-reverting support</span></div></div><div class="p-space-sm bg-[#071019] rounded border-l-2 border-[#25D9D2] border-white/[0.06] flex flex-col gap-1"><div class="flex items-center justify-between"><div class="flex items-center gap-1 font-label-sm text-label-sm text-[#25D9D2]"><span class="material-symbols-outlined text-[14px]">bolt</span><span class="">INSTITUTIONAL BLOCK DETECTED</span></div><span class="font-mono-xs text-mono-xs text-[#8FA4B7] tabular-num">13:42:18 IST</span></div><p class="font-body-sm text-body-sm text-[#8FA4B7] leading-tight">Single print of <span class="text-[#E7EEF5] font-semibold font-mono-xs text-mono-xs tabular-num">₹145.20 Cr</span> absorbed at <span class="text-[#25D9D2] font-semibold font-mono-xs text-mono-xs tabular-num">₹1,608.50</span>. Aggressive delta hedging in 1620 CE contracts.</p></div><div class="p-space-sm bg-[#101C28] rounded border border-white/[0.06] flex flex-col gap-1"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[#22C997] text-[16px]">psychology</span><span class="font-label-sm text-label-sm text-[#22C997] font-bold uppercase">ALGO DIRECTIVE: MOMENTUM SQUEEZE</span></div><p class="font-body-sm text-body-sm text-[#E7EEF5] leading-normal">High probability test of <span class="font-bold text-[#25D9D2] font-mono-xs text-mono-xs tabular-num">₹1,640.00</span> prior to Thursday weekly expiry. Gamma squeeze likely if ₹1,620 OI converts to short covering.</p></div><div class="grid grid-cols-2 gap-space-sm pt-space-xs"><button class="flex items-center justify-center gap-space-xs bg-[#101C28] hover:bg-[#142232] text-[#E7EEF5] border border-white/[0.08] py-1.5 rounded font-label-md text-label-md transition-all"><span class="material-symbols-outlined text-[16px] text-[#8FA4B7]">show_chart</span><span class="">OPEN INFY CHART</span></button><button class="flex items-center justify-center gap-space-xs bg-[#25D9D2] hover:brightness-110 text-[#05080D] font-headline-sm text-headline-sm font-bold py-1.5 rounded shadow-[0_0_12px_rgba(37,217,210,0.25)] transition-all"><span class="material-symbols-outlined text-[16px]">table_chart</span><span class="">LAUNCH CHAIN</span></button></div></div></div>
+</div>
+</div>
+<!-- Client-side Interactive Script for Active Sidebar Highlight & Micro-interactions -->
+<script>
+  (function() {
+    // 1. Force highlight of 'Watchlist' item in sidebar navigation
+    try {
+      const navLinks = document.querySelectorAll('nav a[data-path]');
+      navLinks.forEach(link => {
+        const path = link.getAttribute('data-path');
+        if (path === 'watchlist') {
+          link.className = 'flex items-center px-space-md py-space-md bg-surface-container text-primary-container border-l-2 border-primary-container shadow-[inset_0_0_12px_rgba(0,229,255,0.12)] font-headline-sm text-headline-sm transition-colors rounded-r';
+        } else {
+          link.className = 'flex items-center px-space-md py-space-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors rounded-r font-body-md text-body-md';
+        }
+      });
+    } catch(e) {
+      console.warn("Sidebar activation sync bypassed", e);
+    }
+  })();
+</script></main></div>
+
+
+
+
+
+</body></html>
