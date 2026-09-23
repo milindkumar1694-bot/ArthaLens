@@ -44,10 +44,7 @@ services:
           name: arthalens-db
           property: connectionString
       - key: REDIS_URL
-        fromService:
-          type: redis
-          name: arthalens-redis
-          property: connectionString
+        sync: false
 
   # ------------------------------------------------------------------
   # FRONTEND SERVICE (Vite Static Site)
@@ -64,7 +61,7 @@ services:
         destination: /index.html
     envVars:
       - key: VITE_API_BASE_URL
-        value: https://arthalens-backend.onrender.com/api/v1
+        sync: false
 
 databases:
   - name: arthalens-db
@@ -72,7 +69,7 @@ databases:
     user: arthalens_user
     plan: free
 
-# Optional Redis Cache Instance
+# Optional Redis Cache Instance (enable this block and set backend REDIS_URL from this service if cache persistence is required)
 # - type: redis
 #   name: arthalens-redis
 #   ipAllowList: []
