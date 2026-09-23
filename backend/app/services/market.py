@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+import logging
 from app.config import Settings
 from app.data.brokers import BrokerProvider, MockBrokerProvider
 from app.schemas.common import Status
@@ -9,6 +10,7 @@ from .cache import Cache
 
 
 SUPPORTED_SYMBOLS = {"NIFTY", "BANKNIFTY", "SENSEX", "INDIAVIX"}
+logger = logging.getLogger("arthalens.market")
 
 
 class MarketDataService:
@@ -29,6 +31,21 @@ class MarketDataService:
         age = (datetime.now(timezone.utc) - value.timestamp).total_seconds()
         if age > maximum_age: return value.model_copy(update={"is_stale": True, "status": Status.STALE, "message": "Data exceeded configured freshness threshold."})
         return value
+    async def connect(self) -> ProviderStatus:
+        if not self._provider:
+            return await self.provider_status()
+        try:
+            await self._provider.connect()
+        except Exception as err:
+            logger.error("Provider connect failed provider=%s error=%s", self._provider.name, err)
+        return await self._provider.status()
+    async def disconnect(self) -> None:
+        if not self._provider:
+            return
+        try:
+            await self._provider.disconnect()
+        except Exception as err:
+            logger.warning("Provider disconnect failed provider=%s error=%s", self._provider.name, err)
     async def quote(self, symbol: str) -> MarketSnapshot:
         symbol = symbol.upper()
         if symbol not in SUPPORTED_SYMBOLS: raise ValueError(f"Unsupported market symbol: {symbol}")
