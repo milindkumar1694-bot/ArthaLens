@@ -55,8 +55,13 @@ class AngelOneBrokerProvider(BrokerProvider):
                     self.connected = True
                     logger.info("Successfully authenticated with Angel One SmartAPI for client %s", self.client_id)
                 else:
-                    self.connected = False
-                    logger.warning("Angel One authentication failed: %s", data.get("message"))
+                     self.connected = False
+                     logger.warning(
+                      "Angel One authentication failed: status=%s errorcode=%s message=%s",
+                      data.get("status"),
+                      data.get("errorcode"),
+                      data.get("message"),
+                    )
         except Exception as err:
             self.connected = False
             logger.error("Angel One connection exception: %s", err)
