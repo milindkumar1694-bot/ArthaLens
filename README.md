@@ -58,7 +58,7 @@ Configure the following environment variables in Render Dashboard for your servi
 | `ANGEL_ONE_API_KEY` | Backend | Angel One SmartAPI key |
 | `ANGEL_ONE_CLIENT_ID` | Backend | Angel One SmartAPI Client Code |
 | `ANGEL_ONE_PASSWORD` | Backend | Angel One Password |
-| `ANGEL_ONE_TOTP` | Backend | Angel One TOTP Secret |
+| `ANGEL_ONE_TOTP` | Backend | Angel One TOTP secret (Base32 QR token, backend generates 6-digit OTP) |
 | `DATABASE_URL` | Backend | Render PostgreSQL Connection String |
 | `REDIS_URL` | Backend | Render Redis Connection String |
 | `CORS_ORIGINS` | Backend | `https://arthalens-frontend.onrender.com` |
