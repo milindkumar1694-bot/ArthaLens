@@ -1,9 +1,11 @@
 import logging
+import binascii
 from datetime import date, datetime, timezone
 import re
 from collections import defaultdict
 
 import httpx
+import pyotp
 
 from app.config import Settings
 from app.data.brokers.base import BrokerProvider
@@ -31,10 +33,10 @@ class AngelOneBrokerProvider(BrokerProvider):
 
     def __init__(self, settings: Settings):
         self.settings = settings
-        self.api_key = settings.angel_one_api_key
-        self.client_id = settings.angel_one_client_id
-        self.password = settings.angel_one_password
-        self.totp = settings.angel_one_totp
+        self.api_key = settings.angel_one_api_key.strip()
+        self.client_id = settings.angel_one_client_id.strip()
+        self.password = settings.angel_one_password.strip()
+        self.totp = settings.angel_one_totp.strip()
         self.instrument_master_url = settings.angel_one_instrument_master_url
 
         self.jwt_token: str | None = None
@@ -76,17 +78,53 @@ class AngelOneBrokerProvider(BrokerProvider):
         self.feed_token = None
         self.last_auth_reason = reason
 
+    def _auth_diagnostics(self) -> dict[str, bool]:
+        return {
+            "angelone_auth_attempt": True,
+            "client_id_present": bool(self.client_id),
+            "api_key_present": bool(self.api_key),
+            "password_present": bool(self.password),
+            "totp_present": bool(self.totp),
+        }
+
+    def _generate_totp(self) -> str | None:
+        if not self.totp:
+            return None
+        normalized_secret = self.totp.replace(" ", "").upper()
+        try:
+            code = pyotp.TOTP(normalized_secret).now()
+        except (binascii.Error, TypeError, ValueError):
+            return None
+        return code
+
     async def connect(self) -> None:
         self.authentication_attempted = True
+        diagnostics = self._auth_diagnostics()
+        logger.info(
+            "Angel One authentication attempt angelone_auth_attempt=%s client_id_present=%s api_key_present=%s password_present=%s totp_present=%s",
+            diagnostics["angelone_auth_attempt"],
+            diagnostics["client_id_present"],
+            diagnostics["api_key_present"],
+            diagnostics["password_present"],
+            diagnostics["totp_present"],
+        )
         if not self._configuration_complete:
             self._clear_auth("missing_credentials")
             logger.warning("Angel One authentication skipped: missing required credentials api_key/client_id/password/totp")
             return
 
+        totp_code = self._generate_totp()
+        if not totp_code:
+            self._clear_auth("invalid_totp_configuration")
+            logger.warning(
+                "Angel One authentication skipped: invalid totp configuration (expected ANGEL_ONE_TOTP as TOTP secret)"
+            )
+            return
+
         payload = {
             "clientcode": self.client_id,
             "password": self.password,
-            "totp": self.totp,
+            "totp": totp_code,
         }
 
         try:

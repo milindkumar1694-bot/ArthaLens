@@ -32,7 +32,7 @@ def _live_settings(**overrides):
         "ANGEL_ONE_API_KEY": "api_key",
         "ANGEL_ONE_CLIENT_ID": "client_id",
         "ANGEL_ONE_PASSWORD": "password",
-        "ANGEL_ONE_TOTP": "123456",
+        "ANGEL_ONE_TOTP": "JBSWY3DPEHPK3PXP",
         "ANGEL_ONE_INSTRUMENT_MASTER_URL": "https://example.com/master.json",
     }
     base.update(overrides)
@@ -49,7 +49,14 @@ async def test_market_service_initializes_angel_provider_in_live_mode():
 
 @pytest.mark.asyncio
 async def test_angel_one_missing_credentials_marks_provider_unavailable():
-    settings = Settings(DATA_MODE="live", BROKER_PROVIDER="angelone", ANGEL_ONE_API_KEY="", ANGEL_ONE_CLIENT_ID="")
+    settings = Settings(
+        DATA_MODE="live",
+        BROKER_PROVIDER="angelone",
+        ANGEL_ONE_API_KEY="",
+        ANGEL_ONE_CLIENT_ID="",
+        ANGEL_ONE_PASSWORD="",
+        ANGEL_ONE_TOTP="",
+    )
     provider = AngelOneBrokerProvider(settings)
 
     await provider.connect()
@@ -63,9 +70,13 @@ async def test_angel_one_missing_credentials_marks_provider_unavailable():
 @pytest.mark.asyncio
 async def test_angel_one_authentication_success(monkeypatch):
     provider = AngelOneBrokerProvider(_live_settings())
+    provider._generate_totp = lambda: "123456"
 
     def post_handler(url, **kwargs):
         if url.endswith("loginByPassword"):
+            assert kwargs["json"]["clientcode"] == "client_id"
+            assert kwargs["json"]["password"] == "password"
+            assert kwargs["json"]["totp"] == "123456"
             return httpx.Response(200, json={"status": True, "data": {"jwtToken": "jwt", "feedToken": "feed"}})
         raise AssertionError("unexpected POST")
 
@@ -86,9 +97,10 @@ async def test_angel_one_authentication_success(monkeypatch):
 @pytest.mark.asyncio
 async def test_angel_one_authentication_failure(monkeypatch):
     provider = AngelOneBrokerProvider(_live_settings())
+    provider._generate_totp = lambda: "123456"
 
     def post_handler(url, **kwargs):
-        return httpx.Response(401, json={"status": False, "errorcode": "AB1010", "message": "Invalid totp"})
+        return httpx.Response(200, json={"status": False, "errorcode": "AB1050", "message": "Invalid totp and client combination"})
 
     def get_handler(url, **kwargs):
         return httpx.Response(200, json=[])
@@ -100,7 +112,56 @@ async def test_angel_one_authentication_failure(monkeypatch):
     assert provider.connected is False
     assert provider.jwt_token is None
     assert provider.last_auth_reason == "authentication_failed"
-    assert provider.last_auth_http_status == 401
+    assert provider.last_auth_http_status == 200
+
+
+@pytest.mark.asyncio
+async def test_angel_one_missing_totp_marks_unavailable():
+    provider = AngelOneBrokerProvider(_live_settings(ANGEL_ONE_TOTP=""))
+    await provider.connect()
+    assert provider.connected is False
+    assert provider.last_auth_reason == "missing_credentials"
+
+
+@pytest.mark.asyncio
+async def test_angel_one_malformed_totp_configuration_marks_unavailable():
+    provider = AngelOneBrokerProvider(_live_settings(ANGEL_ONE_TOTP="not-a-valid-totp-secret"))
+    await provider.connect()
+    assert provider.connected is False
+    assert provider.last_auth_reason == "invalid_totp_configuration"
+
+
+@pytest.mark.asyncio
+async def test_angel_one_auth_logs_do_not_leak_secrets(caplog):
+    secret = "JBSWY3DPEHPK3PXP"
+    provider = AngelOneBrokerProvider(
+        _live_settings(
+            ANGEL_ONE_API_KEY="  api_key  ",
+            ANGEL_ONE_CLIENT_ID="  client_id  ",
+            ANGEL_ONE_PASSWORD="  password  ",
+            ANGEL_ONE_TOTP=f"  {secret}  ",
+        )
+    )
+    provider._generate_totp = lambda: "123456"
+    provider._http_client = StubAsyncClient(
+        post_handler=lambda *args, **kwargs: httpx.Response(200, json={"status": False, "errorcode": "AB1050", "message": "Invalid totp and client combination"}),
+        get_handler=lambda *args, **kwargs: httpx.Response(200, json=[]),
+    )
+
+    with caplog.at_level("INFO", logger="arthalens.broker.angelone"):
+        await provider.connect()
+
+    logs = " ".join(record.message for record in caplog.records)
+    assert "angelone_auth_attempt=True" in logs
+    assert "client_id_present=True" in logs
+    assert "api_key_present=True" in logs
+    assert "password_present=True" in logs
+    assert "totp_present=True" in logs
+    assert "  client_id  " not in logs
+    assert "  password  " not in logs
+    assert "  api_key  " not in logs
+    assert secret not in logs
+    assert "123456" not in logs
 
 
 @pytest.mark.asyncio
