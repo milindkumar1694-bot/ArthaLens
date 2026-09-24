@@ -24,6 +24,7 @@ class Settings(BaseSettings):
     market_refresh_seconds: int = 15
     option_chain_refresh_seconds: int = 30
     expiry_refresh_seconds: int = 3600
+    instrument_master_cache_seconds: int = 21600
     risk_free_rate: float = 0.065
     dividend_yield: float = 0.0
     default_lot_size: int = 1
@@ -36,6 +37,7 @@ class Settings(BaseSettings):
     angel_one_client_id: str = ""
     angel_one_password: str = ""
     angel_one_totp: str = ""
+    angel_one_instrument_master_url: str = "https://margincalculator.angelbroking.com/OpenAPI_File/files/OpenAPIScripMaster.json"
 
     # News Credentials
     news_provider: str = "newsapi"
@@ -74,10 +76,27 @@ class Settings(BaseSettings):
             return True
         p = self.provider_name
         if p in ("angelone", "smartapi"):
-            return bool(self.angel_one_api_key and self.angel_one_client_id)
+            return bool(self.angel_one_api_key and self.angel_one_client_id and self.angel_one_password and self.angel_one_totp)
         if p == "fyers":
             return bool(self.fyers_client_id and self.fyers_access_token)
         return False
+
+    @property
+    def broker_configuration_status(self) -> str:
+        if self.data_mode == "mock":
+            return "MOCK_SIMULATION"
+        provider = self.provider_name
+        if not provider:
+            return "MISSING_PROVIDER"
+        if provider in ("angelone", "smartapi"):
+            if self.angel_one_api_key and self.angel_one_client_id and self.angel_one_password and self.angel_one_totp:
+                return "COMPLETE"
+            return "INCOMPLETE"
+        if provider == "fyers":
+            if self.fyers_client_id and self.fyers_access_token:
+                return "COMPLETE"
+            return "INCOMPLETE"
+        return "UNSUPPORTED_PROVIDER"
 
     @property
     def is_news_configured(self) -> bool:

@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     configure_logging(); settings = get_settings()
+    logger.info("ArthaLens startup initiated env=%s data_mode=%s provider=%s", settings.app_env, settings.data_mode, settings.provider_name or "unconfigured")
     config_readiness = validate_production_config(settings)
     app.state.settings = settings; app.state.config_readiness = config_readiness
     engine = create_database_engine(settings.database_url); cache = Cache(settings.redis_url); await cache.connect()
@@ -29,21 +30,29 @@ async def lifespan(app: FastAPI):
     app.state.analytics_service = AnalyticsService(settings, cache)
     app.state.telegram_service = TelegramAlertService(settings)
     app.state.llm_service = LLMService(settings)
-    provider = await app.state.market_service.provider_status()
-    logger.info("ArthaLens API started environment=%s data_mode=%s provider=%s database=%s redis=%s", settings.app_env, settings.data_mode, provider.provider, app.state.database_check(), "configured" if settings.redis_url else "not_configured")
+    provider_before_connect = await app.state.market_service.provider_status()
+    logger.info("Provider initialized provider=%s configured=%s connected=%s", provider_before_connect.provider, provider_before_connect.configured, provider_before_connect.connected)
+    provider_after_connect = await app.state.market_service.connect()
+    logger.info("Provider authentication result provider=%s configured=%s connected=%s status=%s message=%s", provider_after_connect.provider, provider_after_connect.configured, provider_after_connect.connected, provider_after_connect.status, provider_after_connect.message or "")
+    logger.info("ArthaLens dependencies status database=%s redis=%s", app.state.database_check(), cache.status)
+    logger.info("ArthaLens API started environment=%s data_mode=%s provider=%s", settings.app_env, settings.data_mode, provider_after_connect.provider)
     scheduler = AsyncIOScheduler()
     async def refresh_markets():
+        logger.debug("Market refresh tick")
         for symbol in ("NIFTY", "BANKNIFTY", "SENSEX", "INDIAVIX"): await app.state.market_service.quote(symbol)
     async def refresh_options():
+        logger.debug("Option-chain refresh tick")
         for symbol in ("NIFTY", "BANKNIFTY"): await app.state.market_service.option_chain(symbol)
     async def refresh_expiries():
+        logger.debug("Expiry refresh tick")
         for symbol in ("NIFTY", "BANKNIFTY"): await app.state.market_service.expiries(symbol)
     scheduler.add_job(refresh_markets, "interval", seconds=settings.market_refresh_seconds, id="market_refresh")
     scheduler.add_job(refresh_options, "interval", seconds=settings.option_chain_refresh_seconds, id="option_chain_refresh")
     scheduler.add_job(refresh_expiries, "interval", seconds=settings.expiry_refresh_seconds, id="expiry_refresh")
     scheduler.start(); app.state.scheduler = scheduler
+    logger.info("Scheduler started market=%ss option_chain=%ss expiry=%ss", settings.market_refresh_seconds, settings.option_chain_refresh_seconds, settings.expiry_refresh_seconds)
     yield
-    scheduler.shutdown(wait=False); await cache.close()
+    scheduler.shutdown(wait=False); await app.state.market_service.disconnect(); await cache.close()
     logger.info("ArthaLens API shutdown")
 
 settings = get_settings()
