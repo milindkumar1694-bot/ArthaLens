@@ -25,6 +25,7 @@ async def lifespan(app: FastAPI):
     app.state.settings = settings; app.state.config_readiness = config_readiness
     engine = create_database_engine(settings.database_url); cache = Cache(settings.redis_url); await cache.connect()
     app.state.cache = cache; app.state.database_check = lambda: database_check(engine); app.state.market_service = MarketDataService(settings, cache)
+    await app.state.market_service.connect()
     app.state.analytics_service = AnalyticsService(settings, cache)
     app.state.telegram_service = TelegramAlertService(settings)
     app.state.llm_service = LLMService(settings)

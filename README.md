@@ -60,7 +60,7 @@ Configure the following environment variables in Render Dashboard for your servi
 | `ANGEL_ONE_PASSWORD` | Backend | Angel One Password |
 | `ANGEL_ONE_TOTP` | Backend | Angel One TOTP Secret |
 | `DATABASE_URL` | Backend | Render PostgreSQL Connection String |
-| `REDIS_URL` | Backend | Render Redis Connection String |
+| `REDIS_URL` | Backend | Optional Redis Connection String; the app falls back to in-process cache if omitted |
 | `CORS_ORIGINS` | Backend | `https://arthalens-frontend.onrender.com` |
 | `NEWS_API_KEY` | Backend | NewsAPI key |
 | `TELEGRAM_BOT_TOKEN` | Backend | Telegram Bot Token for alerts |

@@ -12,7 +12,19 @@ SUPPORTED_SYMBOLS = {"NIFTY", "BANKNIFTY", "SENSEX", "INDIAVIX"}
 
 
 class MarketDataService:
-    def __init__(self, settings: Settings, cache: Cache | None = None): self.settings = settings; self.cache = cache or Cache(); self._provider = self._select_provider()
+    def __init__(self, settings: Settings, cache: Cache | None = None):
+        self.settings = settings
+        self.cache = cache or Cache()
+        self._provider = self._select_provider()
+
+    @property
+    def provider(self) -> BrokerProvider | None:
+        return self._provider
+
+    async def connect(self) -> None:
+        if self._provider:
+            await self._provider.connect()
+
     def _select_provider(self) -> BrokerProvider | None:
         if self.settings.data_mode == "mock" and self.settings.provider_name in {"", "mock"}:
             return MockBrokerProvider()
@@ -25,10 +37,12 @@ class MarketDataService:
                 from app.data.brokers.fyers import FyersBrokerProvider
                 return FyersBrokerProvider(self.settings)
         return None
+
     def _stale(self, value: MarketSnapshot | OptionChain, maximum_age: int):
         age = (datetime.now(timezone.utc) - value.timestamp).total_seconds()
         if age > maximum_age: return value.model_copy(update={"is_stale": True, "status": Status.STALE, "message": "Data exceeded configured freshness threshold."})
         return value
+
     async def quote(self, symbol: str) -> MarketSnapshot:
         symbol = symbol.upper()
         if symbol not in SUPPORTED_SYMBOLS: raise ValueError(f"Unsupported market symbol: {symbol}")
@@ -38,10 +52,12 @@ class MarketDataService:
             result = await self._provider.get_quote(symbol); await self.cache.set(key, result, self.settings.market_cache_ttl_seconds); return self._stale(result, self.settings.max_market_data_age_seconds)
         return MarketSnapshot(symbol=symbol, timestamp=datetime.now(timezone.utc), source="not_configured",
             status=Status.UNAVAILABLE, message="Market data provider is not configured. Live mode never falls back to mock data.")
+
     async def provider_status(self) -> ProviderStatus:
         if self._provider: return await self._provider.status()
         return ProviderStatus(provider=self.settings.provider_name or "none", configured=False, connected=False,
             status=Status.UNAVAILABLE, message="Broker provider not configured")
+
     async def expiries(self, symbol: str) -> ExpiryInfo:
         if symbol.upper() not in {"NIFTY", "BANKNIFTY"}: raise ValueError(f"Unsupported option underlying: {symbol}")
         key = f"expiries:{symbol.upper()}"; cached = await self.cache.get(key, ExpiryInfo)
@@ -49,6 +65,7 @@ class MarketDataService:
         if self._provider:
             result = await self._provider.get_expiries(symbol); await self.cache.set(key, result, self.settings.expiry_cache_ttl_seconds); return result
         return ExpiryInfo(symbol=symbol.upper(), expiries=[], source="not_configured", timestamp=datetime.now(timezone.utc), status=Status.UNAVAILABLE, message="Market data provider is not configured.")
+
     async def option_chain(self, symbol: str, expiry: str | None = None, strike_range: int | None = None) -> OptionChain:
         symbol = symbol.upper()
         if symbol not in {"NIFTY", "BANKNIFTY"}: raise ValueError(f"Unsupported option underlying: {symbol}")

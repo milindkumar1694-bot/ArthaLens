@@ -1,6 +1,8 @@
+import logging
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
 
+logger = logging.getLogger("arthalens.database")
 
 def create_database_engine(database_url: str) -> Engine | None:
     if not database_url:
@@ -18,5 +20,6 @@ def database_check(engine: Engine | None) -> str:
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
         return "ok"
-    except Exception:
+    except Exception as exc:
+        logger.warning("Database health check failed: %s", exc)
         return "unavailable"

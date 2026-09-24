@@ -16,5 +16,5 @@ class BrokerProvider(ABC):
     async def get_expiries(self, symbol: str) -> ExpiryInfo: raise NotImplementedError
     async def get_instruments(self, symbol: str | None = None) -> list[Instrument]: raise NotImplementedError
     async def get_futures(self, symbol: str): raise NotImplementedError
-    async def connect(self) -> None: raise NotImplementedError
+    async def connect(self) -> None: return None
     async def disconnect(self) -> None: return None

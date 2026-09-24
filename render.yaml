@@ -43,11 +43,6 @@ services:
         fromDatabase:
           name: arthalens-db
           property: connectionString
-      - key: REDIS_URL
-        fromService:
-          type: redis
-          name: arthalens-redis
-          property: connectionString
 
   # ------------------------------------------------------------------
   # FRONTEND SERVICE (Vite Static Site)

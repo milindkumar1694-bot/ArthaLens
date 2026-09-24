@@ -10,6 +10,10 @@ from .base import BrokerProvider
 class MockBrokerProvider(BrokerProvider):
     """Deterministic, explicitly labelled development data. Never selected in live mode."""
     name = "mock"
+    connected = True
+    async def connect(self) -> None:
+        self.connected = True
+        return None
     _quotes = {
         "NIFTY": (22500.0, 22480.0), "BANKNIFTY": (48500.0, 48400.0),
         "SENSEX": (74000.0, 73900.0), "INDIAVIX": (14.0, 13.8),
